@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users',
     'rest_framework',
+    'banking',
+
 ]
 AUTH_USER_MODEL = 'users.User'
 MIDDLEWARE = [
