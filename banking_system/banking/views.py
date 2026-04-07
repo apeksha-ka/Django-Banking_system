@@ -12,6 +12,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from .models import Transaction
+from rest_framework.views import APIView
+from rest_framework import status
 
 
 class BankViewSet(viewsets.ModelViewSet):
@@ -118,3 +120,12 @@ class BankViewSet(viewsets.ModelViewSet):
             "date": t.created_at
         })
        return Response(data)
+    
+class BankAPIView(APIView):
+
+    permission_classes=[IsAuthenticated]
+
+    def get(self, request):
+        bank_accounts = request.user.bank_accounts
+        seriallizer = BankSerializer(bank_accounts, many=True)
+        return Response(data=seriallizer.data, status=status.HTTP_200_OK)

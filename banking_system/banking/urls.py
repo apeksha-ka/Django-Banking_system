@@ -1,8 +1,8 @@
 from rest_framework.routers import DefaultRouter
-from .views import BankViewSet
+from .views import BankViewSet, BankAPIView
+from django.urls import path
 
 router = DefaultRouter()
 router.register('accounts', BankViewSet)
-router.register('accounts', BankViewSet, basename='accounts')
 
-urlpatterns = router.urls
+urlpatterns = router.urls + [path('bank_accounts', BankAPIView.as_view())]
