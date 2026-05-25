@@ -22,11 +22,11 @@ class User(AbstractUser):
     username = None
 
     name = models.CharField(max_length=100)
-    phone = models.CharField(max_length=15)
+    phone_number = models.CharField(max_length=15)
     email = models.EmailField(unique=True)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['name', 'phone']
+    REQUIRED_FIELDS = ['name', 'phone_number']
 
     objects = UserManager()
 

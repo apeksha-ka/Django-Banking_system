@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="/static/css/ui-fallback.css" rel="stylesheet"/>
+<title>Edit Account | Apex Trust Bank</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#34d399",
+                        "surface-container-lowest": "#09090b",
+                        "on-tertiary-container": "#bbf7d0",
+                        "on-primary-fixed-variant": "#5b21b6",
+                        "tertiary-fixed": "#bbf7d0",
+                        "on-tertiary": "#001a12",
+                        "background": "#09090b",
+                        "inverse-surface": "#fafafa",
+                        "on-surface-variant": "#a1a1aa",
+                        "inverse-on-surface": "#09090b",
+                        "surface-container-low": "#0f0f12",
+                        "on-surface": "#fafafa",
+                        "secondary-fixed-dim": "#71717a",
+                        "on-primary": "#0a0012",
+                        "primary-fixed": "#ede9fe",
+                        "on-tertiary-fixed-variant": "#047857",
+                        "secondary-fixed": "#a1a1aa",
+                        "on-secondary-fixed-variant": "#3f3f46",
+                        "surface-tint": "#a78bfa",
+                        "on-tertiary-fixed": "#003318",
+                        "secondary-container": "#27272a",
+                        "error": "#ef4444",
+                        "on-error-container": "#fca5a5",
+                        "outline-variant": "#27272a",
+                        "primary-container": "#7c3aed",
+                        "outline": "#52525b",
+                        "primary": "#a78bfa",
+                        "error-container": "#3b1111",
+                        "surface-container-high": "#18181b",
+                        "surface-container": "#121215",
+                        "on-secondary-fixed": "#18181b",
+                        "tertiary-fixed-dim": "#6ee7b7",
+                        "surface-container-highest": "#1e1e22",
+                        "inverse-primary": "#5b21b6",
+                        "primary-fixed-dim": "#c4b5fd",
+                        "on-primary-fixed": "#2e1065",
+                        "surface-variant": "#18181b",
+                        "surface-bright": "#18181b",
+                        "on-background": "#fafafa",
+                        "on-error": "#1a0000",
+                        "tertiary-container": "#065f46",
+                        "surface-dim": "#0c0c0f",
+                        "secondary": "#71717a",
+                        "surface": "#0c0c0f",
+                        "on-secondary-container": "#a1a1aa",
+                        "on-primary-container": "#ede9fe",
+                        "on-secondary": "#09090b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Geist"],
+                        "display": ["Geist"],
+                        "body": ["Geist"],
+                        "label": ["Geist"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Geist', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .edit-content {
+            max-width: 960px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        .edit-layout {
+            display: grid;
+            grid-template-columns: minmax(220px, 320px) minmax(420px, 1fr);
+            gap: 24px;
+            align-items: stretch;
+        }
+        .edit-visual,
+        .edit-form-panel {
+            min-width: 0;
+        }
+        .edit-visual {
+            min-height: 420px;
+        }
+        .edit-form-panel input,
+        .edit-form-panel select {
+            min-height: 48px;
+        }
+        .edit-actions > * {
+            min-height: 48px;
+        }
+        @media (max-width: 900px) {
+            .edit-layout {
+                grid-template-columns: 1fr;
+            }
+            .edit-visual {
+                min-height: 240px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased flex min-h-screen">
+<!-- SideNavBar (Shared Component Blueprint) -->
+<aside class="flex flex-col h-full fixed left-0 top-0 py-4 bg-[#0c0c0f] text-primary font-geist antialiased h-screen left-0 border-r border-[#27272a] w-64 z-50">
+<div class="px-6 mb-10">
+<h1 class="text-lg font-black text-violet-400 tracking-tight">Apex Bank India</h1>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest mt-1">Premium Banking</p>
+</div>
+<nav class="flex-1 px-3 space-y-1">
+<!-- Active Tab: View Accounts (Contextually relevant for Edit flow) -->
+<a class="flex items-center gap-3 px-3 py-3 bg-violet-500/10 text-violet-400 border-r-4 border-violet-500 font-semibold transition-all duration-200 tap-highlight-transparent cursor-pointer" href="/accounts/">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="text-sm">View Accounts</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 text-[#a1a1aa] hover:text-[#fafafa] hover:bg-[#27272a] transition-all duration-200 tap-highlight-transparent cursor-pointer" href="/add-account/">
+<span class="material-symbols-outlined">add_card</span>
+<span class="text-sm">Add Account</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 text-[#a1a1aa] hover:text-[#fafafa] hover:bg-[#27272a] transition-all duration-200 tap-highlight-transparent cursor-pointer" href="/summary/">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-sm">Account Summary</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 text-[#a1a1aa] hover:text-[#fafafa] hover:bg-[#27272a] transition-all duration-200 tap-highlight-transparent cursor-pointer" href="/transfer/">
+<span class="material-symbols-outlined">swap_horiz</span>
+<span class="text-sm">Transfer Money</span>
+</a></nav>
+<div class="px-3 pt-4 border-t border-[#27272a]">
+<a class="flex items-center gap-3 px-3 py-3 text-[#a1a1aa] hover:text-error transition-all duration-200 tap-highlight-transparent cursor-pointer" href="/login/">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-sm">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 flex-1 flex flex-col min-h-screen bg-background relative overflow-hidden">
+<!-- Subtle Ambient Background Element -->
+<div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10 translate-x-1/2 -translate-y-1/2"></div>
+<!-- Top Toolbar -->
+<header class="h-16 flex items-center px-8 border-b border-outline-variant/30">
+<a class="group flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-colors" href="/accounts/">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+<span class="text-sm font-medium">Back to View Accounts</span>
+</a>
+</header>
+<section class="edit-content p-8 md:p-12 max-w-4xl w-full mx-auto">
+<div class="mb-10">
+<h2 class="text-4xl font-bold tracking-tight text-on-surface mb-2">Edit Account</h2>
+
+</div>
+<!-- Main Content Layout: Bento Grid Style -->
+<div class="edit-layout grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Profile Image / Brand Visual -->
+<div class="edit-visual md:col-span-4 aspect-square md:aspect-auto rounded-xl border border-outline-variant bg-surface-container-low overflow-hidden relative group">
+<img class="w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-500" data-alt="A macro photograph of high-tech circuit board traces glowing with a soft violet light against a deep obsidian background. The image has a narrow depth of field, highlighting precise metallic textures and futuristic engineering. The lighting is moody and focused, perfectly mirroring the Obsidian dark UI theme with high-contrast violet accents and dark zinc-gray tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDTJILw8JL4IqKGTcvzxTygoYLenW9HhyN46k1---FcWAYhMPIPrnWXgWqzMaRcsBBJ2sLCzJBBJ8ux4nMOLpkm1S8xGlzvq8wSg1WigPlcivge7blGWIo9dm4jnyXUyaUdjFNMKXAYGQNODyMSHsC8xX9q9x8Wpoc2WP08-H-QNjMMENx3Gi5LQKeHWi7iSM1u2vGrvA5O3l6-jFo6sw1Or6VIh6b7T11HRJyUk0lr4sOa93iiH8B3aqsrb4K-4xDpxN4oOi7vpI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent p-6 flex flex-col justify-end">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-tertiary"></div>
+<span class="text-xs font-mono text-tertiary uppercase tracking-tighter">Verified Account</span>
+</div>
+</div>
+</div>
+<!-- Edit Form Container -->
+<div class="edit-form-panel md:col-span-8 p-8 rounded-xl border border-outline-variant bg-surface-container">
+<form class="space-y-6" method="post" action="/accounts/{{ account.id }}/edit/">
+{% csrf_token %}
+<!-- Account Holder Name -->
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant" for="account-holder">Account Holder Name</label>
+<div class="relative group">
+<input name="account_holder" class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-outline" id="account-holder" type="text" value="{% if account %}{{ account.account_holder }}{% else %}Primary Savings{% endif %}"/>
+<span class="material-symbols-outlined absolute right-4 top-3 text-outline group-focus-within:text-primary">person</span>
+</div>
+</div>
+<!-- Grid for Split Fields -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Account Number -->
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant" for="account-number">Account Number</label>
+<div class="relative group">
+<input class="w-full bg-surface-container-lowest/50 border border-outline-variant rounded-lg px-4 py-3 text-on-surface-variant cursor-not-allowed outline-none font-mono" id="account-number" readonly="" type="text" value="{% if account %}{{ account.account_number }}{% else %}**** 4582{% endif %}"/>
+<span class="material-symbols-outlined absolute right-4 top-3 text-outline">lock</span>
+</div>
+</div>
+<!-- IFSC Code -->
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant" for="ifsc">IFSC Code</label>
+<div class="relative group">
+<input
+name="ifsc_code"
+class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all font-mono"
+id="ifsc"
+type="text"
+value="{% if account %}{{ account.ifsc_code }}{% else %}APEX0001234{% endif %}"/>
+<span class="material-symbols-outlined absolute right-4 top-3 text-outline group-focus-within:text-primary">pin</span>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant" for="account-type">Account Type</label>
+<select name="account_type" class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" id="account-type">
+<option value="Savings" {% if account.account_type == "Savings" %}selected{% endif %}>Savings</option>
+<option value="Current" {% if account.account_type == "Current" %}selected{% endif %}>Current</option>
+<option value="Business" {% if account.account_type == "Business" %}selected{% endif %}>Business</option>
+</select>
+</div>
+<div class="edit-actions pt-8 border-t border-outline-variant flex flex-col md:flex-row gap-4">
+<button class="flex-1 bg-primary text-on-primary font-bold py-3.5 rounded-lg active:scale-[0.98] transition-all hover:brightness-110 shadow-lg shadow-primary/10" type="submit">
+                                Update Account Details
+                            </button>
+<a class="flex-1 border border-outline-variant text-on-surface-variant font-bold py-3.5 rounded-lg active:scale-[0.98] transition-all hover:bg-surface-container-highest hover:text-on-surface text-center" href="/accounts/">
+                                Back to View Accounts
+                            </a>
+</div>
+</form>
+</div>
+<!-- Secondary Info Card -->
+</div>
+</section>
+<!-- Footer / Support Line -->
+<footer class="mt-auto p-8 border-t border-outline-variant/30 flex justify-between items-center">
+<span class="text-xs text-outline">© 2024 Apex Trust Bank India. All rights reserved.</span>
+</footer>
+</main>
+</body></html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="/static/css/ui-fallback.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    @font-face {
+      font-family: 'Geist';
+      src: url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+    }
+    body {
+      font-family: 'Geist', sans-serif;
+      background-color: #09090b;
+      color: #fafafa;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "outline-variant": "#27272a",
+            "surface-variant": "#18181b",
+            "surface-container": "#121215",
+            "on-primary": "#0a0012",
+            "on-error": "#1a0000",
+            "inverse-surface": "#fafafa",
+            "surface": "#0c0c0f",
+            "inverse-primary": "#5b21b6",
+            "error": "#ef4444",
+            "primary-fixed": "#ede9fe",
+            "on-tertiary": "#001a12",
+            "on-secondary-fixed-variant": "#3f3f46",
+            "surface-bright": "#18181b",
+            "surface-container-lowest": "#09090b",
+            "surface-container-highest": "#1e1e22",
+            "on-error-container": "#fca5a5",
+            "error-container": "#3b1111",
+            "secondary-fixed": "#a1a1aa",
+            "on-tertiary-fixed": "#003318",
+            "surface-dim": "#0c0c0f",
+            "on-primary-fixed-variant": "#5b21b6",
+            "primary-container": "#7c3aed",
+            "on-primary-fixed": "#2e1065",
+            "surface-container-high": "#18181b",
+            "on-surface-variant": "#a1a1aa",
+            "tertiary": "#34d399",
+            "on-background": "#fafafa",
+            "inverse-on-surface": "#09090b",
+            "on-primary-container": "#ede9fe",
+            "primary": "#a78bfa",
+            "on-secondary": "#09090b",
+            "tertiary-fixed": "#bbf7d0",
+            "secondary-container": "#27272a",
+            "secondary": "#71717a",
+            "primary-fixed-dim": "#c4b5fd",
+            "on-secondary-fixed": "#18181b",
+            "surface-tint": "#a78bfa",
+            "tertiary-fixed-dim": "#6ee7b7",
+            "on-surface": "#fafafa",
+            "outline": "#52525b",
+            "tertiary-container": "#065f46",
+            "background": "#09090b",
+            "on-tertiary-fixed-variant": "#047857",
+            "surface-container-low": "#0f0f12",
+            "secondary-fixed-dim": "#71717a",
+            "on-tertiary-container": "#bbf7d0",
+            "on-secondary-container": "#a1a1aa"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Geist"],
+            "display": ["Geist"],
+            "body": ["Geist"],
+            "label": ["Geist"]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex">
+<!-- SideNavBar Component -->
+<aside class="fixed left-0 top-0 h-full w-64 border-r border-zinc-800 bg-zinc-900 flex flex-col py-6 font-geist text-sm tracking-tight">
+<div class="px-6 mb-10">
+<h1 class="text-lg font-black text-violet-400">Apex Trust</h1>
+<p class="text-zinc-500 text-xs">Premium Banking</p>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="text-zinc-400 px-4 py-3 flex items-center gap-3 hover:bg-zinc-800 hover:text-zinc-50 transition-all active:translate-x-1 duration-200" href="/accounts/">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+        View Accounts
+      </a>
+
+<a class="text-zinc-400 px-4 py-3 flex items-center gap-3 hover:bg-zinc-800 hover:text-zinc-50 transition-all active:translate-x-1 duration-200" href="/summary/">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+        Account Summary
+      </a>
+<a class="bg-zinc-800/50 text-violet-400 border-r-2 border-violet-400 px-4 py-3 flex items-center gap-3 hover:bg-zinc-800 hover:text-zinc-50 transition-all active:translate-x-1 duration-200" href="/transfer/">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+        Transfer Money
+      </a>
+</nav>
+<div class="mt-auto px-4">
+<a class="text-zinc-400 px-4 py-3 flex items-center gap-3 hover:bg-zinc-800 hover:text-zinc-50 transition-all active:translate-x-1 duration-200" href="/login/">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+        Logout
+      </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 flex-1 flex flex-col min-h-screen">
+<!-- TopNavBar Component -->
+<header class="flex justify-between items-center w-full px-6 py-3 border-b border-zinc-800 bg-zinc-950 font-geist tracking-tight text-zinc-50 sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 text-zinc-400 hover:text-zinc-50 transition-colors active:scale-95 duration-200" onclick="window.location.href='/accounts/'">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+<span class="text-sm font-medium">Back to Account Details</span>
+</button>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-zinc-400 hover:text-zinc-50 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-zinc-400 hover:text-zinc-50 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Canvas -->
+<div class="flex-1 p-8 max-w-4xl mx-auto w-full">
+<div class="mb-10">
+<h2 class="text-3xl font-extrabold tracking-tighter text-on-background">Transfer Money</h2>
+<p class="text-on-surface-variant mt-2">Move funds securely between accounts or to external beneficiaries.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Transfer Form -->
+<div class="lg:col-span-7 bg-surface-container border border-outline-variant rounded-xl p-8 shadow-sm">
+{% if error %}
+<div class="mb-6 rounded-lg border border-error/40 bg-error-container px-4 py-3 text-sm text-on-error-container">
+{{ error }}
+</div>
+{% endif %}
+<form method="POST" class="space-y-6">
+{% csrf_token %}
+<!-- From Account Selection -->
+<div>
+<label class="block text-xs font-medium uppercase tracking-widest text-secondary mb-2">From Account</label>
+<div class="relative">
+<select name="from_account" class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary focus:border-transparent appearance-none transition-all">
+
+{% for account in accounts %}
+<option value="{{ account.id }}">
+{{ account.account_number }} — ₹{{ account.balance }}
+</option>
+{% endfor %}
+
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-secondary">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Recipient Details -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-medium uppercase tracking-widest text-secondary mb-2">To Account Number</label>
+<input
+name="to_account"
+class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 text-on-surface placeholder:text-zinc-600 focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+placeholder="Enter account number"
+type="text"/>
+</div>
+<div>
+<label class="block text-xs font-medium uppercase tracking-widest text-secondary mb-2">IFSC Code</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 text-on-surface placeholder:text-zinc-600 focus:ring-2 focus:ring-primary focus:border-transparent transition-all" placeholder="APEX0001234" type="text"/>
+</div>
+</div>
+<!-- Amount Input -->
+<div>
+<label class="block text-xs font-medium uppercase tracking-widest text-secondary mb-2">Amount (₹)</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 pl-4 flex items-center text-secondary font-medium">₹</span>
+<input
+name="amount"
+class="w-full bg-surface-container-low border border-outline-variant rounded-lg pl-8 pr-4 py-4 text-2xl font-bold text-on-surface placeholder:text-zinc-700 focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+placeholder="0.00"
+step="0.01"
+min="0.01"
+type="number"/>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col sm:flex-row gap-4 pt-4 border-t border-outline-variant/30">
+<button class="flex-1 bg-primary text-on-primary font-bold py-4 rounded-lg hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2 shadow-lg shadow-violet-900/20" type="submit">
+<span class="material-symbols-outlined text-xl" data-icon="send" data-weight="fill" style="font-variation-settings: 'FILL' 1;">send</span>
+                Transfer
+              </button>
+<button class="px-8 border border-outline-variant text-on-surface-variant font-medium py-4 rounded-lg hover:bg-surface-variant transition-all active:scale-95" onclick="window.location.href='/accounts/'" type="button">
+                Cancel
+              </button>
+</div>
+</form>
+</div>
+<!-- Sidebar Info / Summary -->
+<div class="lg:col-span-5 space-y-6">
+<!-- Security Card -->
+<div class="bg-surface-container-high border border-outline-variant rounded-xl p-6 relative overflow-hidden group">
+<div class="relative z-10">
+<div class="w-12 h-12 bg-tertiary/10 rounded-lg flex items-center justify-center mb-4 text-tertiary">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+</div>
+<h3 class="text-lg font-bold text-on-surface mb-2">Secure Transfer</h3>
+<p class="text-sm text-on-surface-variant">Your transaction is protected by bank-grade 256-bit encryption. Multi-factor authentication may be required for large amounts.</p>
+</div>
+<div class="absolute top-0 right-0 w-32 h-32 bg-tertiary/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+</div>
+<!-- Quick Contacts / Recent -->
+</div>
+</div>
+</div>
+<!-- Background Decoration -->
+<div class="fixed bottom-0 right-0 w-1/2 h-1/2 bg-violet-900/5 blur-[120px] rounded-full -mb-32 -mr-32 pointer-events-none"></div>
+</main>
+</body></html>

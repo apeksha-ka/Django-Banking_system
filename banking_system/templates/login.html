@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="/static/css/ui-fallback.css" rel="stylesheet"/>
+<title>Login | Apex Bank India</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+    :root {
+        --background: #09090b;
+        --surface: #0f0f12;
+        --surface-2: #121215;
+        --surface-3: #18181b;
+        --outline: #27272a;
+        --outline-strong: #52525b;
+        --text: #fafafa;
+        --muted: #a1a1aa;
+        --primary: #a78bfa;
+        --primary-strong: #7c3aed;
+        --primary-soft: #ede9fe;
+        --error: #fca5a5;
+    }
+
+    * {
+        box-sizing: border-box;
+    }                                                                                               
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        font-family: "Geist", Arial, sans-serif;
+        color: var(--text);
+        background:
+            radial-gradient(circle at 18% 18%, rgba(167, 139, 250, 0.14), transparent 28rem),
+            radial-gradient(circle at 85% 80%, rgba(52, 211, 153, 0.08), transparent 30rem),
+            var(--background);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+        color: var(--primary);
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: var(--primary-soft);
+    }
+
+    .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+        vertical-align: middle;
+    }
+
+    .app-header {
+        height: 64px;
+        display: flex;
+        align-items: center;
+        padding: 0 32px;
+        border-bottom: 1px solid var(--outline);
+        background: rgba(9, 9, 11, 0.86);
+        backdrop-filter: blur(18px);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 20px;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+    }
+
+    .brand-mark {
+        width: 34px;
+        height: 34px;
+        display: grid;
+        place-items: center;
+        border-radius: 8px;
+        color: #0a0012;
+        background: var(--primary);
+    }
+
+    .page {
+        min-height: calc(100vh - 64px);
+        display: grid;
+        place-items: center;
+        padding: 48px 32px;
+    }
+
+    .login-shell {
+        width: min(100%, 1040px);
+        display: grid;
+        grid-template-columns: 1fr 460px;
+        gap: 72px;
+        align-items: center;
+    }
+
+    .intro h1 {
+        max-width: 560px;
+        margin: 0 0 24px;
+        font-size: clamp(40px, 5vw, 68px);
+        line-height: 0.96;
+        letter-spacing: -0.06em;
+    }
+
+    .intro p {
+        max-width: 560px;
+        margin: 0 0 34px;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.65;
+    }
+
+    .security-list {
+        display: grid;
+        gap: 16px;
+    }
+
+    .security-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--text);
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .security-item .material-symbols-outlined {
+        color: var(--primary);
+    }
+
+    .login-card {
+        border: 1px solid var(--outline);
+        background: linear-gradient(180deg, rgba(24, 24, 27, 0.96), rgba(15, 15, 18, 0.96));
+        box-shadow: 0 28px 80px rgba(0, 0, 0, 0.46);
+        padding: 40px;
+        border-radius: 12px;
+    }
+
+    .login-card h2 {
+        margin: 0 0 8px;
+        font-size: 28px;
+        line-height: 1.1;
+        letter-spacing: -0.04em;
+    }
+
+    .login-card .subcopy {
+        margin: 0 0 30px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.55;
+    }
+
+    .error {
+        margin: 0 0 18px;
+        padding: 12px 14px;
+        border: 1px solid rgba(252, 165, 165, 0.35);
+        border-radius: 8px;
+        color: var(--error);
+        background: rgba(59, 17, 17, 0.62);
+        font-size: 14px;
+    }
+
+    .form {
+        display: grid;
+        gap: 22px;
+    }
+
+    .field {
+        display: grid;
+        gap: 9px;
+    }
+
+    .field-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+    }
+
+    label {
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+
+    .phone-input {
+        display: grid;
+        grid-template-columns: auto 1fr;
+    }
+
+    .prefix {
+        display: grid;
+        place-items: center;
+        min-width: 58px;
+        border: 1px solid var(--outline);
+        border-right: 0;
+        border-radius: 8px 0 0 8px;
+        color: var(--muted);
+        background: var(--surface-3);
+        font-size: 14px;
+    }
+
+    input {
+        width: 100%;
+        min-height: 48px;
+        border: 1px solid var(--outline);
+        border-radius: 8px;
+        padding: 0 14px;
+        color: var(--text);
+        background: var(--surface);
+        font: inherit;
+        outline: none;
+    }
+
+    .phone-input input {
+        border-radius: 0 8px 8px 0;
+    }
+
+    input:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.18);
+    }
+
+    .password-wrap {
+        position: relative;
+    }
+
+    .password-wrap input {
+        padding-right: 52px;
+    }
+
+    .icon-button {
+        width: 38px;
+        height: 38px;
+        border: 0;
+        border-radius: 8px;
+        display: grid;
+        place-items: center;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        color: var(--muted);
+        background: transparent;
+        cursor: pointer;
+    }
+
+    .icon-button:hover {
+        color: var(--text);
+        background: var(--surface-3);
+    }
+
+    .submit {
+        min-height: 50px;
+        border: 0;
+        border-radius: 8px;
+        color: #0a0012;
+        background: var(--primary);
+        font: inherit;
+        font-weight: 800;
+        cursor: pointer;
+        transition: transform 160ms ease, filter 160ms ease;
+    }
+
+    .submit:hover {
+        filter: brightness(1.08);
+    }
+
+    .submit:active {
+        transform: scale(0.985);
+    }
+
+    .signup {
+        margin-top: 18px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 14px;
+    }
+
+    .trust {
+        margin-top: 28px;
+        display: flex;
+        justify-content: center;
+        gap: 28px;
+        color: var(--muted);
+        opacity: 0.78;
+    }
+
+    .trust-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+
+    @media (max-width: 860px) {
+        .app-header {
+            padding: 0 20px;
+        }
+
+        .page {
+            padding: 32px 20px;
+            align-items: start;
+        }
+
+        .login-shell {
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        .intro {
+            display: none;
+        }
+
+        .login-card {
+            padding: 28px;
+        }
+    }
+</style>
+</head>
+<body>
+<header class="app-header">
+    <div class="brand">
+        <span class="brand-mark">
+            <span class="material-symbols-outlined">account_balance</span>
+        </span>
+        <span>Apex Bank India</span>
+    </div>
+</header>
+
+<main class="page">
+    <div class="login-shell">
+        <section class="intro" aria-label="Banking security overview">
+            <h1>Secure Gateway to Your Wealth</h1>
+            <p>Access your personalized banking dashboard with industry-leading security protocols and institutional clarity.</p>
+            <div class="security-list">
+                <div class="security-item">
+                    <span class="material-symbols-outlined">verified_user</span>
+                    <span>Two-Factor Authentication Enabled</span>
+                </div>
+                <div class="security-item">
+                    <span class="material-symbols-outlined">lock</span>
+                    <span>256-bit AES Encryption</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="login-card">
+                <h2>Login to Account</h2>
+                <p class="subcopy">Enter your registered mobile number and password.</p>
+
+                {% if error %}
+                <p class="error">{{ error }}</p>
+                {% endif %}
+
+                <form action="/login/" method="post" class="form">
+                    {% csrf_token %}
+                    <div class="field">
+                        <label for="phone">Phone Number</label>
+                        <div class="phone-input">
+                            <span class="prefix">+91</span>
+                            <input id="phone" name="phone" type="text" placeholder="Enter Phone Number" autocomplete="tel"/>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="field-row">
+                            <label for="password">Password</label>
+                            <a href="#">Forgot password?</a>
+                        </div>
+                        <div class="password-wrap">
+                            <input id="password" name="password" placeholder="Enter Password" type="password" autocomplete="current-password"/>
+                            <button class="icon-button" type="button" aria-label="Show password" onclick="const input = document.getElementById('password'); input.type = input.type === 'password' ? 'text' : 'password';">
+                                <span class="material-symbols-outlined">visibility</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button class="submit" type="submit">Login</button>
+                </form>
+
+                <div class="signup">
+                    <span>New to Apex Bank India?</span>
+                    <a href="/register/">Sign Up</a>
+                </div>
+            </div>
+
+            <div class="trust">
+                <div class="trust-item">
+                    <span class="material-symbols-outlined">shield</span>
+                    <span>Secure</span>
+                </div>
+                <div class="trust-item">
+                    <span class="material-symbols-outlined">policy</span>
+                    <span>Privacy First</span>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+</body>
+</html>

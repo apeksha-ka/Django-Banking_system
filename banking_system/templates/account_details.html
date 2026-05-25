@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="/static/css/ui-fallback.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#27272a",
+                    "on-tertiary-fixed-variant": "#047857",
+                    "surface-bright": "#18181b",
+                    "background": "#09090b",
+                    "secondary-fixed": "#a1a1aa",
+                    "on-error-container": "#fca5a5",
+                    "outline": "#52525b",
+                    "on-secondary-fixed-variant": "#3f3f46",
+                    "on-secondary-fixed": "#18181b",
+                    "on-primary-fixed": "#2e1065",
+                    "inverse-surface": "#fafafa",
+                    "surface-tint": "#a78bfa",
+                    "primary-fixed-dim": "#c4b5fd",
+                    "on-primary-fixed-variant": "#5b21b6",
+                    "error-container": "#3b1111",
+                    "on-surface": "#fafafa",
+                    "inverse-primary": "#5b21b6",
+                    "surface-dim": "#0c0c0f",
+                    "surface-container-high": "#18181b",
+                    "primary-fixed": "#ede9fe",
+                    "on-tertiary-fixed": "#003318",
+                    "on-tertiary": "#001a12",
+                    "tertiary-container": "#065f46",
+                    "secondary-container": "#27272a",
+                    "primary-container": "#7c3aed",
+                    "surface-container-low": "#0f0f12",
+                    "tertiary-fixed-dim": "#6ee7b7",
+                    "on-tertiary-container": "#bbf7d0",
+                    "on-secondary-container": "#a1a1aa",
+                    "on-primary-container": "#ede9fe",
+                    "surface-container": "#121215",
+                    "secondary-fixed-dim": "#71717a",
+                    "on-surface-variant": "#a1a1aa",
+                    "primary": "#a78bfa",
+                    "on-error": "#1a0000",
+                    "on-background": "#fafafa",
+                    "surface-container-highest": "#1e1e22",
+                    "surface": "#0c0c0f",
+                    "tertiary": "#34d399",
+                    "error": "#ef4444",
+                    "surface-container-lowest": "#09090b",
+                    "inverse-on-surface": "#09090b",
+                    "surface-variant": "#18181b",
+                    "secondary": "#71717a",
+                    "on-secondary": "#09090b",
+                    "on-primary": "#0a0012",
+                    "tertiary-fixed": "#bbf7d0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Geist"],
+                    "display": ["Geist"],
+                    "body": ["Geist"],
+                    "label": ["Geist"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Geist', sans-serif; background-color: #09090b; color: #fafafa; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #09090b; }
+        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #52525b; }
+        table { border-collapse: separate; border-spacing: 0; }
+    </style>
+</head>
+<body class="flex min-h-screen selection:bg-primary/30">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full flex flex-col pt-8 bg-[#09090b] h-screen w-64 border-r border-[#27272a] font-['Geist'] tracking-tight z-50">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-sm" data-icon="account_balance">account_balance</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xl font-black text-[#fafafa]">Apex Trust</span>
+<span class="text-[10px] uppercase tracking-[0.2em] text-secondary">Precision Banking</span>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-3 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-[#a78bfa] bg-[#18181b] border-r-2 border-[#a78bfa] font-semibold transition-all duration-200 scale-98 active:opacity-80" href="/accounts/">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+<span class="">View Accounts</span>
+</a>
+
+<a class="flex items-center gap-3 px-3 py-2 text-[#a1a1aa] hover:text-[#fafafa] hover:bg-[#18181b] transition-all duration-200 scale-98 active:opacity-80" href="/summary/">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="">Account Summary</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#a1a1aa] hover:text-[#fafafa] hover:bg-[#18181b] transition-all duration-200 scale-98 active:opacity-80" href="/transfer/">
+<span class="material-symbols-outlined" data-icon="swap_horiz">swap_horiz</span>
+<span class="">Transfer Money</span>
+</a></nav>
+<div class="px-3 pb-8 mt-auto">
+<a class="flex items-center gap-3 px-3 py-2 text-[#a1a1aa] hover:text-[#fafafa] hover:bg-[#18181b] transition-all duration-200 scale-98 active:opacity-80" href="/login/">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="">Logout</span>
+</a>
+</div>
+</aside>
+<div class="flex-1 flex flex-col ml-64 min-h-screen">
+<!-- TopAppBar Shell -->
+<header class="flex justify-between items-center px-8 py-4 bg-[#09090b]/80 backdrop-blur-md w-full border-b border-[#27272a] font-['Geist'] tracking-tight sticky top-0 z-40">
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-surface-variant transition-colors text-secondary hover:text-primary" onclick="window.location.href='/accounts/'">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="text-lg font-bold text-[#fafafa]">Account Details</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 text-secondary">
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center overflow-hidden">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMywA5S0-yty8qk3Brzb3TlCQgMPJJekDwa1vEFpGdk-hR9OXlDJ1F4l1wqehiauCP3uwgHiihQ8G53wzmvE-LUyy6SJZXnXmcWyBmEeS20uVP06zl67j2meHxdyiiwqNd4vCgGVc-E2IX7tZr9bbZi8ZaS2TNyz2lrGFIuHG34V8mbYsPhrPx7_PUKXQ-tkY_jZSkBn68o4v6uA4MuqHc3PPSOSVGCoAkcu1Q1rf3tDtnUT2Onr6mU7tJHMNQ0LRwAO5jDrkofMk"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 p-8 overflow-y-auto">
+<div class="max-w-6xl mx-auto space-y-8">
+<!-- Account Overview Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Hero Balance Card -->
+<section class="bg-surface-container border border-outline-variant rounded-xl p-8 relative overflow-hidden flex flex-col justify-between min-h-[320px] md:col-span-12">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[100px] -mr-32 -mt-32"></div>
+<div class="relative z-10">
+<p class="text-secondary text-sm font-medium tracking-wider uppercase mb-2">Total Available Balance</p>
+<h2 class="text-6xl font-black text-on-surface tracking-tighter">₹ {% if account %}{{ account.balance }}{% else %}14,82,950.42{% endif %}</h2>
+</div>
+<div class="relative z-10 flex flex-wrap gap-12 mt-12">
+<div>
+<p class="text-secondary text-xs mb-1">Account Number</p>
+<p class="text-on-surface font-mono text-lg tracking-widest">{% if account %}{{ account.account_number }}{% else %}**** **** 8291{% endif %}</p>
+</div>
+<div>
+<p class="text-secondary text-xs mb-1">IFSC Code</p>
+<p class="text-on-surface font-mono text-lg tracking-widest">{% if account.ifsc_code %}{{ account.ifsc_code }}{% else %}APEX0001042{% endif %}</p>
+</div>
+<div>
+<p class="text-secondary text-xs mb-1">Account Holder</p>
+<p class="text-on-surface font-mono text-lg tracking-widest">{% if account.account_holder %}{{ account.account_holder }}{% else %}Apex Customer{% endif %}</p>
+</div>
+<div>
+<p class="text-secondary text-xs mb-1">Account Type</p>
+<span class="px-3 py-1 bg-primary/20 text-primary border border-primary/30 rounded-full text-xs font-bold">{% if account %}{{ account.account_type }}{% else %}SAVINGS PREMIUM{% endif %}</span>
+</div>
+</div>
+</section>
+<!-- Quick Actions / Status Card -->
+</div>
+<!-- Full Transaction History Table Section -->
+<section class="bg-surface-container border border-outline-variant rounded-xl overflow-hidden">
+<div class="px-6 py-6 border-b border-outline-variant">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<h3 class="font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="history">history</span>
+                                Full Transaction History
+                            </h3>
+<div class="flex flex-wrap items-center gap-3">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-sm transition-colors group-focus-within:text-primary" data-icon="search">search</span>
+<input class="pl-9 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg text-xs text-on-surface focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary w-64 transition-all" placeholder="Search by description or amount..." type="text"/>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-on-primary rounded-lg text-xs font-bold hover:bg-primary-container transition-all" onclick="window.location.href='/transactions/{{ account.id }}/'"><span class="material-symbols-outlined text-sm" data-icon="add_box">add_box</span>Add Transaction</button><div class="relative">
+<select class="appearance-none pl-4 pr-10 py-2 bg-surface-container-low border border-outline-variant rounded-lg text-xs font-medium text-secondary focus:outline-none focus:ring-1 focus:ring-primary hover:text-on-surface cursor-pointer transition-all">
+<option>All Categories</option>
+<option>Shopping</option>
+<option>Food &amp; Dining</option>
+<option>Utilities</option>
+<option>Transfers</option>
+<option>Investments</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-secondary text-sm pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low">
+<tr>
+<th class="px-6 py-4 text-[10px] font-bold text-secondary uppercase tracking-widest border-b border-outline-variant">Date</th>
+<th class="px-6 py-4 text-[10px] font-bold text-secondary uppercase tracking-widest border-b border-outline-variant">Description</th>
+<th class="px-6 py-4 text-[10px] font-bold text-secondary uppercase tracking-widest border-b border-outline-variant text-right">Credit (₹)</th>
+<th class="px-6 py-4 text-[10px] font-bold text-secondary uppercase tracking-widest border-b border-outline-variant text-right">Debit (₹)</th>
+<th class="px-6 py-4 text-[10px] font-bold text-secondary uppercase tracking-widest border-b border-outline-variant text-right">Balance (₹)</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<!-- Transaction 1 -->
+{% for transaction in transactions %}
+<tr>
+    <td class="px-6 py-4">
+        {{ transaction.created_at }}
+    </td>
+
+    <td class="px-6 py-4">
+        {{ transaction.transaction_type }}
+    </td>
+
+    <td class="px-6 py-4 text-right">
+        {% if transaction.transaction_type == "Credit" %}
+            ₹{{ transaction.amount }}
+        {% else %}
+            -
+        {% endif %}
+    </td>
+
+    <td class="px-6 py-4 text-right">
+        {% if transaction.transaction_type == "Debit" %}
+            ₹{{ transaction.amount }}
+        {% else %}
+            
+        {% endif %}
+    </td>
+
+    <td class="px-6 py-4 text-right">
+        ₹{{ transaction.display_balance }}
+    </td>
+</tr>
+{% empty %}
+<tr>
+    <td class="px-6 py-8 text-center text-secondary" colspan="5">
+        No transactions found for this account.
+    </td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+
+<!-- Pagination Component -->
+<div class="flex justify-center gap-4 mt-6">
+
+    {% if transactions.has_previous %}
+        <a href="?page={{ transactions.previous_page_number }}"
+           class="px-4 py-2 bg-zinc-800 text-white rounded">
+           Previous
+        </a>
+    {% endif %}
+
+    <span class="text-white pt-2">
+        Page {{ transactions.number }} of {{ transactions.paginator.num_pages }}
+    </span>
+
+    {% if transactions.has_next %}
+        <a href="?page={{ transactions.next_page_number }}"
+           class="px-4 py-2 bg-violet-600 text-white rounded">
+           Next
+        </a>
+    {% endif %}
+
+</div>
+</section>
+<!-- Insights Visual -->
+</div>
+</main>
+<!-- Footer Shell -->
+<footer class="flex justify-between items-center px-8 py-6 bg-[#09090b] w-full border-t border-[#27272a] font-['Geist'] text-xs shrink-0">
+<div class="flex flex-col gap-1">
+<span class="text-[#fafafa] font-bold">Apex Trust Bank</span>
+<span class="text-[#a1a1aa] tracking-tight">© 2024 Apex Trust Bank. Precision in Darkness.</span>
+</div>
+<div class="flex items-center gap-8">
+<div class="flex gap-6">
+<a class="text-[#a1a1aa] hover:text-[#a78bfa] transition-opacity" href="#"><br/></a>
+<a class="text-[#a1a1aa] hover:text-[#a78bfa] transition-opacity" href="#"><br/></a>
+<a class="text-[#a1a1aa] hover:text-[#a78bfa] transition-opacity" href="#"><br/></a>
+</div>
+<div class="flex items-center gap-2 text-secondary">
+<span class="material-symbols-outlined text-xs" data-icon="lock" style='font-variation-settings: "FILL" 1;'>lock</span>
+<span class="font-mono text-[10px]">v2.4.0-STABLE</span>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

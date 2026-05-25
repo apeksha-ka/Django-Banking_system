@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#bbf7d0",
+                        "tertiary": "#34d399",
+                        "tertiary-fixed-dim": "#6ee7b7",
+                        "primary-fixed-dim": "#c4b5fd",
+                        "surface-container-highest": "#1e1e22",
+                        "on-tertiary-fixed": "#003318",
+                        "on-error-container": "#fca5a5",
+                        "surface-container-low": "#0f0f12",
+                        "on-surface-variant": "#a1a1aa",
+                        "on-tertiary-container": "#bbf7d0",
+                        "surface-container-high": "#18181b",
+                        "outline": "#52525b",
+                        "secondary-fixed": "#a1a1aa",
+                        "on-secondary": "#09090b",
+                        "on-primary-fixed-variant": "#5b21b6",
+                        "primary-fixed": "#ede9fe",
+                        "on-background": "#fafafa",
+                        "inverse-on-surface": "#09090b",
+                        "surface-variant": "#18181b",
+                        "surface-tint": "#a78bfa",
+                        "inverse-surface": "#fafafa",
+                        "surface-container-lowest": "#09090b",
+                        "surface-dim": "#0c0c0f",
+                        "tertiary-container": "#065f46",
+                        "background": "#09090b",
+                        "on-secondary-fixed-variant": "#3f3f46",
+                        "surface-bright": "#18181b",
+                        "outline-variant": "#27272a",
+                        "on-tertiary": "#001a12",
+                        "surface": "#0c0c0f",
+                        "on-error": "#1a0000",
+                        "on-secondary-container": "#a1a1aa",
+                        "inverse-primary": "#5b21b6",
+                        "surface-container": "#121215",
+                        "secondary": "#71717a",
+                        "on-primary-fixed": "#2e1065",
+                        "on-primary": "#0a0012",
+                        "secondary-container": "#27272a",
+                        "primary-container": "#7c3aed",
+                        "primary": "#a78bfa",
+                        "on-surface": "#fafafa",
+                        "error": "#ef4444",
+                        "secondary-fixed-dim": "#71717a",
+                        "error-container": "#3b1111",
+                        "on-tertiary-fixed-variant": "#047857",
+                        "on-primary-container": "#ede9fe",
+                        "on-secondary-fixed": "#18181b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "stack-lg": "32px",
+                        "margin-edge": "32px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "container-max": "1280px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Geist"],
+                        "display": ["Geist"],
+                        "body": ["Geist"],
+                        "label": ["Geist"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Geist', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface-container-lowest border-b border-outline-variant sticky top-0 z-50">
+<div class="flex justify-between items-center h-16 px-8 max-w-full mx-auto">
+<div class="flex items-center space-x-12">
+<span class="text-xl font-bold tracking-tight text-on-surface">Apex Bank India</span>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow flex items-center justify-center py-stack-lg px-margin-edge">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter w-full max-w-[1000px] items-center">
+<!-- Left Side: Branding/Visual -->
+<div class="hidden md:block md:col-span-6 pr-8">
+<h1 class="text-5xl font-bold text-on-background mb-6 tracking-tight leading-tight">Secure Gateway to Your Wealth</h1>
+<p class="text-lg text-secondary mb-8 leading-relaxed">Access your personalized banking dashboard with industry-leading security protocols and institutional clarity.</p>
+<div class="space-y-4">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-primary" data-icon="verified_user">verified_user</span>
+<span class="text-sm font-medium text-on-surface">Two-Factor Authentication Enabled</span>
+</div>
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-primary" data-icon="lock">lock</span>
+<span class="text-sm font-medium text-on-surface">256-bit AES Encryption</span>
+</div>
+</div>
+</div>
+<!-- Right Side: Login Card -->
+<div class="md:col-span-6">
+<div class="bg-surface-container border border-outline-variant p-10 rounded-none shadow-2xl">
+<div class="mb-8">
+<h2 class="text-2xl font-bold text-on-surface mb-2">Login to Account</h2>
+<p class="text-sm text-on-surface-variant">Enter your registered mobile number and password.</p>
+</div>
+<form class="space-y-6">
+<!-- Phone Number Input -->
+<div class="space-y-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider block">Phone Number</label>
+<div class="flex">
+<span class="inline-flex items-center px-4 rounded-none border border-r-0 border-outline-variant bg-surface-container-high text-secondary text-sm">
+                                    +91
+                                </span>
+<input class="flex-1 min-w-0 block w-full px-4 py-3 rounded-none border border-outline-variant bg-surface-container-lowest text-on-surface focus:ring-1 focus:ring-primary focus:border-primary focus:outline-none transition-all placeholder:text-outline" maxlength="10" placeholder="10-digit number" type="tel"/>
+</div>
+</div>
+<!-- Password Input -->
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Password</label>
+<a class="text-xs text-primary hover:text-primary-fixed-dim transition-colors" href="#">Forgot password?</a>
+</div>
+<div class="relative">
+<input class="block w-full px-4 py-3 rounded-none border border-outline-variant bg-surface-container-lowest text-on-surface focus:ring-1 focus:ring-primary focus:border-primary focus:outline-none transition-all placeholder:text-outline" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="pt-4 space-y-4">
+<button class="w-full bg-primary-container text-on-primary-container font-bold py-3 rounded-none hover:bg-primary transition-all duration-200 active:scale-[0.98]" type="submit">
+                                Login
+                            </button>
+<div class="text-center">
+<span class="text-sm text-on-surface-variant">New to Apex Bank India?</span>
+<a class="text-sm font-semibold text-primary ml-1 hover:text-primary-fixed-dim transition-colors" href="#">Sign Up</a>
+</div>
+</div>
+</form>
+</div>
+<!-- Trust Badges -->
+<div class="mt-8 flex justify-center space-x-8">
+<div class="flex items-center space-x-2 text-on-surface-variant opacity-50 hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[18px]" data-icon="shield">shield</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Secure</span>
+</div>
+<div class="flex items-center space-x-2 text-on-surface-variant opacity-50 hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[18px]" data-icon="policy">policy</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Privacy First</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+</body></html>

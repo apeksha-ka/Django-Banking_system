@@ -10,7 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 class BankSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
-
+     
     class Meta:
         model = BankAccount
         fields = '__all__'
@@ -21,3 +21,5 @@ class TransactionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transaction
         fields = '__all__'
+
+

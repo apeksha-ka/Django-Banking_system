@@ -2,18 +2,17 @@ from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from decimal import Decimal
+
 
 from .models import BankAccount, Transaction
 from .Serializer import BankSerializer
-from decimal import Decimal
-from rest_framework.decorators import action
-from rest_framework.response import Response
-from rest_framework.decorators import action
-from rest_framework.response import Response
-from .models import Transaction
+from decimal import Decimal                                    
+
+
+
 from rest_framework.views import APIView
 from rest_framework import status
+from rest_framework.decorators import api_view, permission_classes
 
 
 class BankViewSet(viewsets.ModelViewSet):
@@ -27,7 +26,7 @@ class BankViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
-    # ✅ DEPOSIT
+    
     @action(detail=True, methods=['post'])
     def deposit(self, request, pk=None):
         account = self.get_object()
@@ -37,6 +36,8 @@ class BankViewSet(viewsets.ModelViewSet):
             return Response({"error": "Amount is required"})
 
         amount = Decimal(amount)
+        if amount <= 0:
+         return Response({"error": "Invalid amount"})
 
         account.balance += amount
         account.save()
@@ -49,7 +50,7 @@ class BankViewSet(viewsets.ModelViewSet):
 
         return Response({"balance": account.balance})
 
-    # ✅ WITHDRAW
+    
     @action(detail=True, methods=['post'])
     def withdraw(self, request, pk=None):
         account = self.get_object()
@@ -59,6 +60,8 @@ class BankViewSet(viewsets.ModelViewSet):
             return Response({"error": "Amount is required"})
 
         amount = Decimal(amount)
+        if amount <= 0:
+          return Response({"error": "Invalid amount"})
 
         if account.balance >= amount:
             account.balance -= amount
@@ -76,8 +79,7 @@ class BankViewSet(viewsets.ModelViewSet):
     
     @action(detail=True, methods=['post'])
     def transfer(self, request, pk=None):
-        from decimal import Decimal
-        from .models import BankAccount, Transaction
+       
 
         from_account = self.get_object()
         to_account_number = request.data.get('to_account')
@@ -87,6 +89,8 @@ class BankViewSet(viewsets.ModelViewSet):
             return Response({"error": "to_account and amount required"})
 
         amount = Decimal(amount)
+        if amount <= 0:
+          return Response({"error": "Invalid amount"})
 
         try:
             to_account = BankAccount.objects.get(account_number=to_account_number)
@@ -114,18 +118,45 @@ class BankViewSet(viewsets.ModelViewSet):
 
        data = []
        for t in transactions:
-        data.append({
-            "type": t.transaction_type,
-            "amount": str(t.amount),
-            "date": t.created_at
-        })
+          data.append({
+             "type": t.transaction_type,
+             "amount": str(t.amount),
+             "date": t.created_at
+          })
        return Response(data)
     
 class BankAPIView(APIView):
-
-    permission_classes=[IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        bank_accounts = request.user.bank_accounts
-        seriallizer = BankSerializer(bank_accounts, many=True)
-        return Response(data=seriallizer.data, status=status.HTTP_200_OK)
+        bank_accounts = BankAccount.objects.filter(user=request.user)
+        serializer = BankSerializer(bank_accounts, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def account_details(request):
+    account_id = request.GET.get('account_id')
+
+    try:
+        account = BankAccount.objects.get(id=account_id, user=request.user)
+    except BankAccount.DoesNotExist:
+        return Response({"error": "Account not found"}, status=404)
+
+    transactions = Transaction.objects.filter(account=account)
+
+    data = {
+        "account_number": account.account_number,
+        "balance": account.balance,
+        "transactions": [
+            {
+                "amount": t.amount,
+                "type": t.transaction_type,
+                "date": t.created_at
+            } for t in transactions
+        ]
+    }
+
+    return Response(data)

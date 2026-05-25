@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+<style>
+body { display:flex; font-family:Arial; margin:0; }
+.sidebar {
+    width:200px; background:#111; color:#fff; height:100vh; padding:20px;
+}
+.sidebar a {
+    display:block; color:#fff; padding:10px; text-decoration:none;
+}
+.sidebar a:hover { background:#333; }
+.main { flex:1; padding:20px; }
+button { padding:10px; background:blue; color:white; border:none; }
+</style>
+</head>
+
+<body>
+
+
+<div class="sidebar">
+    <h3>Bank</h3>
+    <a href="/dashboard">View Accounts</a>
+    <a href="/summary">Account Summary</a>
+    <a href="/add-account">Add Account</a>
+    <a href="/transfer">Transfer Money</a>
+    <a href="/login">Logout</a>
+</div>
+
+
+<div class="main">
+
+    <h2>Account Details</h2>
+
+    <a href="/add-account">
+        <button>Add Account</button>
+    </a>
+
+    <button onclick="window.location.href='/transactions/'">
+        View Transactions
+    </button>
+
+    <hr>
+
+    <h3>Account List</h3>
+
+    {% for account in accounts %}
+    <div style="border:1px solid gray; padding:15px; margin-top:10px; border-radius:8px;">
+
+        <h4>{{ account.account_type }}</h4>
+
+        <p><b>Account Number:</b> {{ account.account_number }}</p>
+
+        <p><b>Balance:</b> ₹{{ account.balance }}</p>
+
+    </div>
+
+    {% empty %}
+        <p>No accounts available</p>
+    {% endfor %}
+
+</body>
+</html>

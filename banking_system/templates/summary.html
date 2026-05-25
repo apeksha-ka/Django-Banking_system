@@ -1,0 +1,188 @@
+
+
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="/static/css/ui-fallback.css" rel="stylesheet"/>
+<title>Account Summary | Apex Trust Bank</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+        
+        body {
+            font-family: 'Geist', sans-serif;
+            background-color: #09090b;
+            color: #fafafa;
+            overflow: hidden; /* Prevent body scroll to allow independent column scrolling */
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#34d399",
+                        "on-primary-fixed": "#2e1065",
+                        "surface-dim": "#0c0c0f",
+                        "outline": "#52525b",
+                        "surface-tint": "#a78bfa",
+                        "on-secondary": "#09090b",
+                        "tertiary-fixed": "#bbf7d0",
+                        "on-tertiary-container": "#bbf7d0",
+                        "on-background": "#fafafa",
+                        "secondary": "#71717a",
+                        "surface": "#0c0c0f",
+                        "primary": "#a78bfa",
+                        "surface-container-lowest": "#09090b",
+                        "surface-container": "#121215",
+                        "on-primary-container": "#ede9fe",
+                        "on-secondary-fixed-variant": "#3f3f46",
+                        "on-secondary-container": "#a1a1aa",
+                        "on-error-container": "#fca5a5",
+                        "surface-container-highest": "#1e1e22",
+                        "on-primary-fixed-variant": "#5b21b6",
+                        "secondary-container": "#27272a",
+                        "on-tertiary-fixed-variant": "#047857",
+                        "surface-container-low": "#0f0f12",
+                        "on-tertiary-fixed": "#003318",
+                        "inverse-primary": "#5b21b6",
+                        "outline-variant": "#27272a",
+                        "on-tertiary": "#001a12",
+                        "on-secondary-fixed": "#18181b",
+                        "surface-bright": "#18181b",
+                        "on-primary": "#0a0012",
+                        "on-surface": "#fafafa",
+                        "primary-fixed-dim": "#c4b5fd",
+                        "tertiary-fixed-dim": "#6ee7b7",
+                        "tertiary-container": "#065f46",
+                        "background": "#09090b",
+                        "inverse-on-surface": "#09090b",
+                        "inverse-surface": "#fafafa",
+                        "on-surface-variant": "#a1a1aa",
+                        "secondary-fixed-dim": "#71717a",
+                        "secondary-fixed": "#a1a1aa",
+                        "surface-variant": "#18181b",
+                        "error-container": "#3b1111",
+                        "error": "#ef4444",
+                        "primary-fixed": "#ede9fe",
+                        "surface-container-high": "#18181b",
+                        "on-error": "#1a0000",
+                        "primary-container": "#7c3aed"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Geist"],
+                        "display": ["Geist"],
+                        "body": ["Geist"],
+                        "label": ["Geist"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background selection:bg-primary selection:text-on-primary">
+<!-- SideNavBar Component -->
+<aside class="fixed left-0 top-0 h-screen w-[256px] border-r border-[#27272a] bg-[#09090b] flex flex-col pt-8 z-50">
+<div class="px-6 mb-10">
+<h1 class="text-xl font-black text-on-background tracking-tight">Apex Trust Bank</h1>
+<p class="text-[10px] uppercase tracking-[0.2em] text-secondary font-medium">Precision Banking</p>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-all duration-200" href="/accounts/" id="nav-view-accounts">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+<span class="text-sm font-medium">View Accounts</span>
+</a>
+
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary bg-surface-variant border-r-2 border-primary font-semibold transition-all duration-200" href="/summary/">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-sm">Account Summary</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-all duration-200" href="/transfer/">
+<span class="material-symbols-outlined" data-icon="swap_horiz">swap_horiz</span>
+<span class="text-sm font-medium">Transfer Money</span>
+</a></nav>
+<div class="mt-auto p-4 border-t border-outline-variant">
+<button class="flex items-center gap-3 px-4 py-3 w-full rounded-lg text-on-surface-variant hover:text-error hover:bg-error-container/10 transition-all duration-200" onclick="window.location.href='/login/'">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="text-sm font-medium">Logout</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Shell -->
+<main class="ml-[256px] h-screen flex flex-col overflow-y-auto">
+<!-- TopAppBar Component -->
+<header class="flex justify-between items-center px-8 py-4 bg-background/80 backdrop-blur-md sticky top-0 z-40 border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<a class="p-2 hover:bg-surface-container rounded-full transition-colors flex items-center justify-center group" href="/accounts/">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="arrow_back">arrow_back</span>
+</a>
+<h2 class="text-lg font-bold text-on-background tracking-tight">Account Summary</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center ml-2 border border-outline-variant">
+<img alt="User Profile Avatar" class="w-6 h-6 rounded-full" data-alt="A clean, professional 3D minimalist avatar of a high-net-worth individual for a banking application. The avatar features sharp, clean lines, a monochromatic outfit with subtle violet accents, set against a deep obsidian dark-mode background. The lighting is sophisticated and directional, emphasizing the high-contrast professional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkV9Jp3cTLNZCCgueW7FkNCeC0g2f59kBhigmMwjziL7ONxcId6fmvfDIY3_tfmBz_BqcqCApd_oVqm9LCbDDxmjwfV2zTDLj6gPp0SVijoL1C6m81h8THUriYYDIzs8p5CoI7Vxx0R7ZZiAG07wwqRYghPlyo77TbLH7Z09CUgC9LxsIJ7ZFil1ZLZPiUaoV07QUBKB0RtDRwlFDC8O-0VTrIZzyDAZq3uu_M0ZN2Un4x59h6sjhWPX4ZTa6kPbNep0AJtBisQLE"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-8 space-y-8 flex-1">
+<!-- Hero Stats Section: Bento Layout -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 md:grid-cols-1">
+<div class="md:col-span-2 relative overflow-hidden bg-surface-container p-8 rounded-xl border border-outline-variant flex flex-col justify-end min-h-[240px]">
+<div class="absolute top-0 right-0 p-12 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[120px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<p class="text-on-surface-variant text-sm font-medium tracking-wider uppercase mb-2">Total Combined Balance</p>
+<h3 class="text-5xl md:text-6xl font-black text-on-background tracking-tighter">
+                        ₹{{ total_balance }}
+                    </h3>
+<div class="mt-6 flex items-center gap-2 text-tertiary">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+<span class="text-xs font-semibold tracking-tight">+2.4% from last month</span>
+</div>
+</div>
+<div class="bg-primary p-8 rounded-xl flex flex-col justify-between items-start group hover:brightness-110 transition-all cursor-default">
+<div class="w-12 h-12 rounded-lg bg-on-primary-fixed/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary" data-icon="layers">layers</span>
+</div>
+<div>
+<p class="text-on-primary/70 text-sm font-medium mb-1">Active Accounts</p>
+<p class="text-4xl font-black text-on-primary">{{ total_accounts|stringformat:"02d" }}</p>
+</div>
+</div>
+</section>
+<!-- Summary Cards Section -->
+<!-- Visual Data Insight Section -->
+</div>
+<!-- Footer Component -->
+<footer class="flex justify-between items-center px-8 py-6 bg-surface-container-lowest border-t border-outline-variant">
+<div class="flex flex-col gap-1">
+<span class="text-[#fafafa] font-bold text-xs tracking-tight">Apex Trust Bank</span>
+<span class="text-[#a1a1aa] text-[10px]">© 2024 Apex Trust Bank. Precision in Darkness.</span>
+</div>
+<div class="flex gap-6">
+<a class="text-[#a1a1aa] text-xs hover:text-[#a78bfa] transition-colors" href="#"><br/></a>
+<a class="text-[#a1a1aa] text-xs hover:text-[#a78bfa] transition-colors" href="#"><br/></a>
+<a class="text-[#a1a1aa] text-xs hover:text-[#a78bfa] transition-colors" href="#"><br/></a>
+</div>
+</footer>
+</main>
+</body></html>
